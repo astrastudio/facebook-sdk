@@ -227,6 +227,17 @@ class GraphAPI(object):
             method="POST",
         )
 
+    def create_notification(self, user_id, href, ref, template):
+        return self.request(
+            "{0}/{1}/notifications".format(self.version, user_id),
+            post_args={
+                'href': href,
+                'ref': ref,
+                'template': template,
+            },
+            method="POST",
+        )
+
     def get_version(self):
         """Fetches the current version number of the Graph API being used."""
         args = {"access_token": self.access_token}
